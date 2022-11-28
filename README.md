@@ -12,4 +12,13 @@ So I decided to write the algorithm that adds an identifier to a tree with vario
 
 If I'm bowled over, I may try the [advent of code 2022](https://adventofcode.com/2022) in C++ ;-).
 
-Also I'm really curious to understand how good is the C++ support of [Visual Studio Code]() as well as using [TDD]() with C++ (I don't remember working on a C++ code base with unit tests).
+Also I'm really curious to understand how good is the C++ support of [Visual Studio Code](https://code.visualstudio.com/) as well as using [TDD](https://code.visualstudio.com/) with C++ (I don't remember working on a C++ code base with unit tests).
+
+Tooling a bit clunky compared to Haskell ([stack]()) or JVM based languages, c.f. https://www.incredibuild.com/blog/using-github-actions-with-your-c-project.
+
+writen on GCC-11 which enables [C++17 by default](https://gcc.gnu.org/gcc-11/changes.html).
+
+for the C code, I'm going to compile it with the option [`-std=c89`](https://en.wikipedia.org/wiki/ANSI_C#C89).
+
+# C Implementation
+
