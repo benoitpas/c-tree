@@ -17,4 +17,4 @@ jobs:
     - name: Checkout submodules
       uses: snickerbockers/submodules-init@v4
     - name: test
-      run: make runtest
+      run: make runTest
