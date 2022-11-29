@@ -1,4 +1,6 @@
-#include "tree.h"
+extern "C" {
+  #include "tree.h"
+}
 #include <iostream>
 #include <cppunit/TestRunner.h>
 #include <cppunit/TestResult.h>
@@ -10,7 +12,7 @@
 class Test : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test);
-  CPPUNIT_TEST(testTree);
+  CPPUNIT_TEST(testcountNodesEmptyTree);
   CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -18,8 +20,9 @@ public:
   void tearDown(void) {}
 
 protected:
-  void testTree(void) {
-    CPPUNIT_ASSERT(false);
+  void testcountNodesEmptyTree(void) {
+    struct tree t;
+    CPPUNIT_ASSERT_EQUAL(0, countNodes(t));
   }
 };
 

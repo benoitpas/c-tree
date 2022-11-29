@@ -8,4 +8,6 @@ struct tree
     void *value;         
 };
 
+int countNodes(struct tree t);
+
 #endif /* TREE_H */
