@@ -1,7 +1,7 @@
 c-tree
 ------
 
-![Build Status](https://github.com/benoitpas/c-tree/workflows/build/badge.svg)
+[![C/C++ CI](https://github.com/benoitpas/c-tree/actions/workflows/ccpp.yml/badge.svg)](https://github.com/benoitpas/c-tree/actions/workflows/ccpp.yml)
 
 I have not used C/C++ professionally for 20 years and only in very limited occasions in other settings, probably when programming [Arduinos](https://www.arduino.cc/) for very simple tasks. Recently a friend who was still using C++ profesionally at the time (he has stopped since) mentioned ['Modern C++'](https://www.modernescpp.com/index.php/what-is-modern-c).
 

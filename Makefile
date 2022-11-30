@@ -9,8 +9,6 @@ tree.o: tree.c tree.h
 	gcc -c -DUNIT_TEST tree.c
 
 treeTest.o: treeTest.cpp tree.h
-	ls -l /usr/include
-	g++ -c treeTest.cpp
 
 test: tree.o treeTest.o
 	g++ treeTest.o tree.o -lcppunit -o treeTest
