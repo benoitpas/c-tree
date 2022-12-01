@@ -16,11 +16,16 @@ If I'm bowled over, I may try the [advent of code 2022](https://adventofcode.com
 
 Also I'm really curious to understand how good is the C++ support of [Visual Studio Code](https://code.visualstudio.com/) as well as using [TDD](https://code.visualstudio.com/) with C++ (I don't remember working on a C++ code base with unit tests).
 
-Tooling a bit clunky compared to Haskell ([stack]()) or JVM based languages, c.f. https://www.incredibuild.com/blog/using-github-actions-with-your-c-project.
+Tooling a bit clunky compared to Haskell ([stack](https://docs.haskellstack.org/en/stable/)) or JVM based languages, c.f. https://www.incredibuild.com/blog/using-github-actions-with-your-c-project.
 
-writen on GCC-11 which enables [C++17 by default](https://gcc.gnu.org/gcc-11/changes.html).
+The project is writen on GCC-11 which enables [C++17 by default](https://gcc.gnu.org/gcc-11/changes.html).
 
-for the C code, I'm going to compile it with the option [`-std=c89`](https://en.wikipedia.org/wiki/ANSI_C#C89).
+For the C code, I'm going to compile it with the option [`-std=c89`](https://en.wikipedia.org/wiki/ANSI_C#C89).
 
 # C Implementation
+
+In most 'modern' language tree operations are implemented using recursive algorithms. This is not idiomatic C so I decided to use an algorithm with a loop and a [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) instead.
+
+C being C, we need to allocate the memory for the stack and handle it by hand. So to handle any tree, to allocate the stack, we would need to know the size of the tree. Which itself requires a recursive algorithm or a stack to implement the algorithm ;-). Another option would be implementing a stack which can grow when it is full. To simplify this example I'll simply use a fixed size stack.
+
 

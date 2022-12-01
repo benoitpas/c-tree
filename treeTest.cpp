@@ -15,14 +15,19 @@ class Test : public CPPUNIT_NS::TestCase
   CPPUNIT_TEST(testcountNodesEmptyTree);
   CPPUNIT_TEST_SUITE_END();
 
+  struct tree emptyTree;
+  struct tree ex1Tree;
+
 public:
-  void setUp(void) {}
+  void setUp(void) {
+    emptyTree.left = NULL;
+    emptyTree.right = NULL;
+  }
   void tearDown(void) {}
 
 protected:
   void testcountNodesEmptyTree(void) {
-    struct tree t;
-    CPPUNIT_ASSERT_EQUAL(0, countNodes(t));
+    CPPUNIT_ASSERT_EQUAL(0, countNodes(&emptyTree));
   }
 };
 

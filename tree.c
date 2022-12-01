@@ -2,8 +2,14 @@
 
 #include "tree.h"
 
-int countNodes(struct tree t) {
-    return 0;
+int countNodes(struct tree *t) {
+    int r = 0;
+    if (t != NULL) {
+        if ((*t).left != NULL) {
+            r += ((*t).left != NULL ? countNodes((*t).left) : 0);
+        }
+    }
+    return r;
 }
 
 #ifndef UNIT_TEST
