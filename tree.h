@@ -8,6 +8,13 @@ struct tree
     void *value;         
 };
 
+struct idPair
+{
+    int id;
+    void *value;
+};
+
+
 int countNodes(struct tree *t);
 
 #endif /* TREE_H */

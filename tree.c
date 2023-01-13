@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "tree.h"
 
-int countNodes(struct tree *t) {
+int countNodes(struct tree *t)
+{
     int r = 0;
     if (t != NULL) {
         if ((*t).left != NULL) {
@@ -11,7 +13,28 @@ int countNodes(struct tree *t) {
     }
     return r;
 }
- 
+
+/*
+ * This function add an id to the tree nodes (and reuses the values
+ * from the previous tree so they should be immutable)
+ */
+struct tree *addId(struct tree *t)
+{
+    int nbNodes = countNodes(t);
+    struct tree**stack = malloc(sizeof(struct tree *) * nbNodes);
+    int id = 0;
+    int nStack = 1;
+    struct tree **stackP = stack;
+    *stackP = t;
+    while( nStack > 0 )
+    {
+        // pop, add id
+    }
+    free(stack);
+    return t;
+};
+
+
 void printTree(struct tree *t)
 {
     printf("(");
