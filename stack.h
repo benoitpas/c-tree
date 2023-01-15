@@ -3,9 +3,9 @@
 
 struct stack
 {
-    void *elems;
+    void **elems;
     int maxElems;
-    void *currentElem;
+    void **currentElem;
 };
 
 struct stack* newStack(int maxElems);

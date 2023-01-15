@@ -1,17 +1,18 @@
 clean:
 	rm -f *.o
-	rm -f tree treeTest
+	rm -f treeMain treeTest
 
-tree:
-	gcc -std=c89 tree.c -o tree
+treeMain: main.o tree.o stack.o
+	g++ main.o tree.o stack.o -o treeMain
 
-tree.o: tree.c tree.h
-	gcc -c -DUNIT_TEST tree.c
+stackTest: stackTest.o stack.o
+	g++ stackTest.o stack.o -lcppunit -o stackTest
 
 treeTest.o: treeTest.cpp tree.h
 
-test: tree.o treeTest.o
-	g++ treeTest.o tree.o -lcppunit -o treeTest
+treeTest: tree.o treeTest.o stack.o
+	g++ treeTest.o tree.o stack.o -lcppunit -o treeTest
 
-treeTest: test
+allTests: stackTest treeTest
+	./stackTest
 	./treeTest

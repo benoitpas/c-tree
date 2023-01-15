@@ -19,11 +19,12 @@ struct stack* newStack(int maxElems)
 int push(struct stack* s, void* p)
 {
     int r = -1;
-    void* maxPointer = s->elems + s->maxElems * sizeof(void*);
+    void** maxPointer = s->elems + s->maxElems * sizeof(void*);
     if (s->currentElem < maxPointer)
     {
-        s->currentElem = s;
-        s->currentElem ++;
+        *s->currentElem = p;
+        s->currentElem = s->currentElem + 1;
+        r = 0;
     }
     return r;
 };
@@ -36,7 +37,7 @@ void* pop(struct stack* s)
 {
     void* r = NULL;
     if (s->elems < s->currentElem) {
-        r = -- s->currentElem;
+        r = *(--s->currentElem);
     }
     return r;
 };

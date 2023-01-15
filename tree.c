@@ -3,6 +3,10 @@
 
 #include "tree.h"
 
+/*
+ * Note: As a recursive function this is not really
+ * idiomatic C code.
+ */
 int countNodes(struct tree *t)
 {
     int r = 0;
@@ -13,6 +17,7 @@ int countNodes(struct tree *t)
     }
     return r;
 }
+
 
 /*
  * This function add an id to the tree nodes (and reuses the values
@@ -54,25 +59,3 @@ void printTree(struct tree *t)
     }
     printf(")");
 };
-
-#ifndef UNIT_TEST
-int main() {
-    struct tree testa;
-    struct tree testb;
-    struct tree testc;
-    struct tree testd;
-    struct tree teste;
-    testa.value = "A";
-    testa.left = &testb;
-    testa.right = &testc;
-    testb.value = "B";
-    testc.value = "C";
-    testc.left = &testd;
-    testc.right = &teste;
-    testd.value = "D";
-    teste.value = "E";
-
-    printTree(&testa);     
-   return 0;
-}
-#endif

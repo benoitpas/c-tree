@@ -17,4 +17,6 @@ struct idPair
 
 int countNodes(struct tree *t);
 
+void printTree(struct tree *t);
+
 #endif /* TREE_H */

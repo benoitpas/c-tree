@@ -19,4 +19,4 @@ jobs:
     - name: install cppunit
       run: sudo apt install -y libcppunit-dev
     - name: test
-      run: make treeTest
+      run: make allTests
