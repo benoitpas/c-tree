@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "stack.h"
 #include "tree.h"
 
 /*
@@ -19,23 +20,26 @@ int countNodes(struct tree *t)
 }
 
 
+struct treePair
+{
+    struct tree source;
+    void** destination;
+};
+
 /*
  * This function add an id to the tree nodes (and reuses the values
  * from the previous tree so they should be immutable)
  */
+
 struct tree *addId(struct tree *t)
 {
     int nbNodes = countNodes(t);
-    struct tree**stack = malloc(sizeof(struct tree *) * nbNodes);
-    int id = 0;
-    int nStack = 1;
-    struct tree **stackP = stack;
-    *stackP = t;
-    while( nStack > 0 )
+    struct stack* s = newStack(nbNodes);
+    while( !isEmpty(s) )
     {
         // pop, add id
     }
-    free(stack);
+    freeStack(s);
     return t;
 };
 

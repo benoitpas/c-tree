@@ -13,5 +13,6 @@ void freeStack(struct stack *s);
 
 int push(struct stack* s, void* p);
 void* pop(struct stack* s);
+int isEmpty(struct stack* s_);
 
 #endif /* STACK_H */

@@ -39,6 +39,7 @@ protected:
   void testEmptyAndFullStack(void) {
     struct stack* s;
     s = newStack(0);
+    CPPUNIT_ASSERT(isEmpty(s));
     CPPUNIT_ASSERT_EQUAL((void*) NULL, pop(s));
     CPPUNIT_ASSERT_EQUAL(-1, push(s, s));
   }

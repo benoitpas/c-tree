@@ -42,6 +42,11 @@ void* pop(struct stack* s)
     return r;
 };
 
+int isEmpty(struct stack* s) {
+    return s->currentElem == s->elems;
+}
+
+
 void freeStack(struct stack *s)
 {
     free(s->elems);
