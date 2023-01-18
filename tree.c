@@ -22,7 +22,7 @@ int countNodes(struct tree *t)
 
 struct treePair
 {
-    struct tree source;
+    struct tree* source;
     void** destination;
 };
 
@@ -35,9 +35,17 @@ struct tree *addId(struct tree *t)
 {
     int nbNodes = countNodes(t);
     struct stack* s = newStack(nbNodes);
+    struct treePair root;
+    root.source = t;
+    struct tree *r = malloc(sizeof(struct tree));
+    root.destination = (void**) &r;
+    push(s, (void*) &root);
     while( !isEmpty(s) )
     {
-        // pop, add id
+        struct treePair* next;
+        next = pop(s);
+        // Add left/right to stack
+        // Then add id 
     }
     freeStack(s);
     return t;
