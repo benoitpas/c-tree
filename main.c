@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "tree.h"
 
 int main() {
@@ -16,6 +17,13 @@ int main() {
     testd.value = "D";
     teste.value = "E";
 
-    printTree(&testa);     
-   return 0;
+    printTree(&testa, 0);
+    printf("\n");
+
+    struct tree* testWithId;
+    testWithId = addId(&testa);
+
+    printTree(testWithId, 1);
+    printf("\n");
+    return 0;
 }

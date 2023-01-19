@@ -16,7 +16,7 @@ struct idPair
 
 
 int countNodes(struct tree *t);
-
-void printTree(struct tree *t);
+struct tree *addId(struct tree *t);
+void printTree(struct tree *t, int idIncluded);
 
 #endif /* TREE_H */
