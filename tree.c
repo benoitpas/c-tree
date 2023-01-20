@@ -77,7 +77,20 @@ struct tree *addId(struct tree *t)
     return r;
 };
 
-/* add method to free tree with Ids*/
+void freeTree(struct tree *t)
+{
+    int nbNodes = countNodes(t);
+    struct stack* s = newStack(nbNodes);
+    push(s,t);
+
+    while( !isEmpty(s) )
+    {
+        struct tree* n = pop(s);
+        free(n->value);
+        if (n->left) push(s, n->left);
+        if (n->right) push(s, n->right);
+    }
+}
 
 void printTree(struct tree *t, int idIncluded)
 {

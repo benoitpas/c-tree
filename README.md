@@ -26,6 +26,13 @@ For the C code, I'm going to compile it with the option [`-std=c89`](https://en.
 
 In most 'modern' language tree operations are implemented using recursive algorithms. This is not idiomatic C so I decided to use an algorithm with a loop and a [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) instead.
 
-C being C, we need to allocate the memory for the stack and handle it by hand. So to handle any tree, to allocate the stack, we would need to know the size of the tree. Which itself requires a recursive algorithm or a stack to implement the algorithm ;-). Another option would be implementing a stack which can grow when it is full. To simplify this example I'll simply use a fixed size stack.
+C being C, we need to allocate the memory for the stack and handle it by hand. So to handle any tree, to allocate the stack, we would need to know the size of the tree. Which itself requires a recursive algorithm or a stack to implement the algorithm ;-). Another option would be implementing a stack which can grow when it is full. To simplify this example I have implemented a recursive size function on the tree.
+
+Implementing the algorithm, what really struct me is:
+* how little is included in the C standard library, all data structures (like stack or a list) need to be implemented by hand.
+* implementing 'polymorphic' methods and functions relies on 'void' pointers which is quite error prone.
+* how much it complicates the implementation to do the memory management by hand (well done (rust)[https://www.rust-lang.org/] to have improved so elegantly memory management !). And from a developer point of view, what a pain it is. Altought I added a method to free the tree, without running a memory analysis tool like (memcheck)[https://valgrind.org/].
+
+
 
 

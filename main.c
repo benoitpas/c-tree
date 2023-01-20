@@ -25,5 +25,7 @@ int main() {
 
     printTree(testWithId, 1);
     printf("\n");
+    freeTree(testWithId);
+
     return 0;
 }
