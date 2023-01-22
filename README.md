@@ -33,6 +33,11 @@ Implementing the algorithm, what really struct me is:
 * implementing 'polymorphic' methods and functions relies on 'void' pointers which is quite error prone.
 * how much it complicates the implementation to do the memory management by hand (well done (rust)[https://www.rust-lang.org/] to have improved so elegantly memory management !). And from a developer point of view, what a pain it is. Altought I added a method to free the tree, without running a memory analysis tool like (memcheck)[https://valgrind.org/].
 
+# C++ 98
 
+For the next implementation, I'm going to use (C++98)[https://en.wikipedia.org/wiki/C%2B%2B#Standardization]. The goal here is to use what was introduced in C++, especially object orientation and templates.
 
+So to implement the generic tree, there are 2 main options:
+* Either use an OO solution (comparable to the one in (Java 1.3)[https://github.com/benoitpas/java3-tree/], c.f. (Going back in time with Java)[https://medium.com/@benoitpas/going-back-in-time-with-java-81c37c87ecfc])
+* Or use templates to implement a generic solution.
 
