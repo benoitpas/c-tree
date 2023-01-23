@@ -1,3 +1,5 @@
+ #include <utility>
+
 template <typename T> class Tree {
 private:
     T value;
@@ -6,4 +8,6 @@ private:
 
 public:
     Tree(T v, Tree* l, Tree* r);
+
+    Tree<std::pair<int,T>>* addId();
 };
