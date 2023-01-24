@@ -17,7 +17,6 @@ class Test : public CPPUNIT_NS::TestCase
   CPPUNIT_TEST_SUITE_END();
 
   struct tree emptyTree;
-  struct tree ex1Tree;
 
   struct tree testa;
   struct tree testb;

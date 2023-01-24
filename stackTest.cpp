@@ -14,6 +14,7 @@ class StackTest : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(StackTest);
   CPPUNIT_TEST(testPushPop);
+  CPPUNIT_TEST(testEmptyAndFullStack);
   CPPUNIT_TEST_SUITE_END();
 
 

@@ -15,6 +15,10 @@ treeTest.o: treeTest.cpp tree.h
 treeTest: tree.o treeTest.o stack.o
 	g++ $(CFLAGS) treeTest.o tree.o stack.o -lcppunit -o treeTest
 
-allTests: stackTest treeTest
+tree98Test: tree98.o tree98Test.o
+	g++ $(CFLAGS) tree98.o tree98Test.o -lcppunit -o tree98Test
+
+allTests: stackTest treeTest tree98Test
 	./stackTest
 	./treeTest
+	./tree98Test
