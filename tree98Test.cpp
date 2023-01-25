@@ -11,8 +11,7 @@
 class Test98 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test98);
-//  CPPUNIT_TEST(testcountNodesEmptyTree);
-//  CPPUNIT_TEST(testcountNodes);
+  CPPUNIT_TEST(testAddIdEmptyTree);
   CPPUNIT_TEST_SUITE_END();
 
   Tree<const char*> *emptyTree = new Tree<const char*>("",0,0);
@@ -27,15 +26,14 @@ class Test98 : public CPPUNIT_NS::TestCase
 public:
   void setUp(void) {}
   void tearDown(void) {}
-/*
-protected:
-  void testcountNodesEmptyTree(void) {
-    CPPUNIT_ASSERT_EQUAL(1, countNodes(&emptyTree));
-  }
 
-  void testcountNodes(void) {
-    CPPUNIT_ASSERT_EQUAL(5, countNodes(&testa));
-  }*/
+protected:
+  void testAddIdEmptyTree(void) {
+  Tree<std::pair<int,const char*>> *expectedTree = new Tree<std::pair<int,const char*>>(std::pair(0,""),0,0);
+
+
+    CPPUNIT_ASSERT_EQUAL(expectedTree, emptyTree->addId());
+  }
 
 };
 
