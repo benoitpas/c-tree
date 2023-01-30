@@ -8,6 +8,43 @@
 #include <cppunit/BriefTestProgressListener.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 
+#include <cppunit/TestAssert.h>
+
+template <typename T>
+struct CPPUNIT_NS::assertion_traits<Tree<T>>
+{
+    static bool equal( const Tree<T>& x, const Tree<T>& y )
+    {
+      Tree<T>* xLeft = x.getLeft();
+      Tree<T>* xRight = x.getRight();
+      Tree<T>* yLeft = y.getLeft();
+      Tree<T>* yRight = y.getRight();
+
+      return x.getValue() == y.getValue()
+      && ((xLeft == 0 && yLeft == 0) || (xLeft != 0 && yLeft != 0 && *xLeft == *yLeft))
+      && ((xRight == 0 && yRight == 0) || (xRight != 0 && yRight != 0 && *xRight == *yRight));
+    }
+
+    static bool less( const std::string& x, const std::string& y )
+    {
+       return true; //x < y;
+    }
+
+    static bool lessEqual( const std::string& x, const std::string& y )
+    {
+       return false;  //x <= y;
+    }
+
+    static std::string toString( const Tree<T>& x )
+    {
+//      std::string text = '"' + x.value + '"';    // adds quote around the string to see whitespace
+      std::string text = "test";
+      std::ostringstream ost;
+      ost << text;
+      return ost.str();
+    }
+ };
+
 class Test98 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test98);
@@ -29,10 +66,9 @@ public:
 
 protected:
   void testAddIdEmptyTree(void) {
-  Tree<std::pair<int,const char*>> *expectedTree = new Tree<std::pair<int,const char*>>(std::pair(0,""),0,0);
+    Tree<std::pair<int,const char*>> *expectedTree = new Tree<std::pair<int,const char*>>(std::pair(0,""), 0, 0);
 
-
-    CPPUNIT_ASSERT_EQUAL(expectedTree, emptyTree->addId());
+    CPPUNIT_ASSERT_EQUAL(*expectedTree, *(emptyTree->addId()));
   }
 
 };
