@@ -81,7 +81,7 @@ protected:
   }
  
   void testToStringEmptyString() {
-    std::string empty = "";
+    std::string empty = "(\"\")";
     CPPUNIT_ASSERT_EQUAL(empty, emptyTree->toString());
   }
 
