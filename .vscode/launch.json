@@ -8,7 +8,7 @@
             "name": "C Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}//treeMain",
+            "program": "${workspaceFolder}//tree98Test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

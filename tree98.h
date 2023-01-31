@@ -18,7 +18,9 @@ public:
     Tree<T>* getLeft() const { return left; }
     Tree<T>* getRight() const{ return right; }
 
-    Tree<std::pair<int,T>>* addId();
+    Tree<std::pair<int,T>>* addId() const;
+
+    std::string toString() const;
 };
 
 template <typename T> Tree<T>::Tree(T v, Tree* l, Tree* r)
@@ -28,10 +30,20 @@ template <typename T> Tree<T>::Tree(T v, Tree* l, Tree* r)
     right = r;
 }
 
-template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId(){
+template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId() const
+{
     std::pair<int,T>* p = new std::pair<int,T>(0, value);
     Tree<std::pair<int,T>>* r = new Tree<std::pair<int,T>>(*p,0,0);
     return r;
+}
+
+template <typename T> std::string Tree<T>::toString() const
+{
+    std::string empty = "";
+    std::ostringstream ost;
+    ost << "(" << valueToString(value) << (left == 0 ? empty : "," + left->toString())
+               << (right == 0 ? empty : "," + right->toString()) << ")";
+    return ost.str();
 }
 
 template <typename T> bool operator==(const Tree<T>& lhs, const Tree<T>& rhs)

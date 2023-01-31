@@ -1,4 +1,3 @@
-#include "tree98.h"
 
 #include <iostream>
 #include <cppunit/TestRunner.h>
@@ -9,6 +8,26 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 
 #include <cppunit/TestAssert.h>
+
+static std::string valueToString(const std::pair<int, const char*>& pair);
+
+static std::string valueToString(const char* s);
+
+#include "tree98.h"
+
+static std::string valueToString(const std::pair<int, const char*>& pair)
+{
+    std::ostringstream ost;
+    ost << std::get<0>(pair) << "," << std::get<1>(pair);
+    return ost.str();
+}
+
+static std::string valueToString(const char* s)
+{
+    std::ostringstream ost;
+    ost << '"' << s << '"';
+    return ost.str();
+}
 
 template <typename T>
 struct CPPUNIT_NS::assertion_traits<Tree<T>>
@@ -25,20 +44,9 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
       && ((xRight == 0 && yRight == 0) || (xRight != 0 && yRight != 0 && *xRight == *yRight));
     }
 
-    static bool less( const std::string& x, const std::string& y )
-    {
-       return true; //x < y;
-    }
-
-    static bool lessEqual( const std::string& x, const std::string& y )
-    {
-       return false;  //x <= y;
-    }
-
     static std::string toString( const Tree<T>& x )
     {
-//      std::string text = '"' + x.value + '"';    // adds quote around the string to see whitespace
-      std::string text = "test";
+      std::string text = x.toString();
       std::ostringstream ost;
       ost << text;
       return ost.str();
@@ -49,6 +57,7 @@ class Test98 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test98);
   CPPUNIT_TEST(testAddIdEmptyTree);
+  CPPUNIT_TEST(testToStringEmptyString);
   CPPUNIT_TEST_SUITE_END();
 
   Tree<const char*> *emptyTree = new Tree<const char*>("",0,0);
@@ -69,6 +78,11 @@ protected:
     Tree<std::pair<int,const char*>> *expectedTree = new Tree<std::pair<int,const char*>>(std::pair(0,""), 0, 0);
 
     CPPUNIT_ASSERT_EQUAL(*expectedTree, *(emptyTree->addId()));
+  }
+ 
+  void testToStringEmptyString() {
+    std::string empty = "";
+    CPPUNIT_ASSERT_EQUAL(empty, emptyTree->toString());
   }
 
 };
