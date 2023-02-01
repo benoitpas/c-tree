@@ -25,7 +25,7 @@ static std::string valueToString(const std::pair<int, const char*>& pair)
 static std::string valueToString(const char* s)
 {
     std::ostringstream ost;
-    ost << '"' << s << '"';
+    ost << "'" << s << "'";
     return ost.str();
 }
 
@@ -58,14 +58,14 @@ class Test98 : public CPPUNIT_NS::TestCase
   CPPUNIT_TEST_SUITE(Test98);
   CPPUNIT_TEST(testAddIdEmptyTree);
   CPPUNIT_TEST(testToStringEmptyString);
+  CPPUNIT_TEST(testToString);
   CPPUNIT_TEST_SUITE_END();
 
   Tree<const char*> *emptyTree = new Tree<const char*>("",0,0);
-  Tree<const char*> *ex1Tree = new Tree<const char*> ("toto",0,0);
 
   Tree<const char*> *teste = new Tree<const char*> ("E",0,0);
   Tree<const char*> *testd = new Tree<const char*> ("D",0,0);
-  Tree<const char*> *testc = new Tree<const char*> ("C",testd,teste);
+  Tree<const char*> *testc = new Tree<const char*> ("C",0,0);
   Tree<const char*> *testb = new Tree<const char*> ("B",testd,teste);
   Tree<const char*> *testa = new Tree<const char*> ("A",testb,testc);
 
@@ -81,8 +81,13 @@ protected:
   }
  
   void testToStringEmptyString() {
-    std::string empty = "(\"\")";
+    std::string empty = "('')";
     CPPUNIT_ASSERT_EQUAL(empty, emptyTree->toString());
+  }
+
+  void testToString() {
+    std::string e = "('A',('B',('D'),('E')),('C'))";
+    CPPUNIT_ASSERT_EQUAL(e, testa->toString());
   }
 
 };
