@@ -57,6 +57,7 @@ class Test98 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test98);
   CPPUNIT_TEST(testAddIdEmptyTree);
+  CPPUNIT_TEST(testAddId);
   CPPUNIT_TEST(testToStringEmptyString);
   CPPUNIT_TEST(testToString);
   CPPUNIT_TEST_SUITE_END();
@@ -79,6 +80,14 @@ protected:
 
     CPPUNIT_ASSERT_EQUAL(*expectedTree, *(emptyTree->addId()));
   }
+
+  void testAddId(void) {
+    Tree<std::pair<int,const char*>> *expectedTree = new Tree<std::pair<int,const char*>>(std::pair(0,"A"), 0, 0);
+    std::cout << CppUnit::assertion_traits<Tree<std::pair<int,const char*>>>::toString(*(testa->addId())) << '\n';
+
+    CPPUNIT_ASSERT_EQUAL(*expectedTree, *(testa->addId()));
+  }
+
  
   void testToStringEmptyString() {
     std::string empty = "('')";

@@ -2,6 +2,7 @@
 #define TREE98_H
 
 #include <sstream>
+#include <stack>
 #include <string>
 #include <utility>
 
@@ -32,8 +33,12 @@ template <typename T> Tree<T>::Tree(T v, Tree* l, Tree* r)
 
 template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId() const
 {
+    std::stack<std::pair<Tree<T>*,Tree<std::pair<int,T>>**>> s;
     std::pair<int,T>* p = new std::pair<int,T>(0, value);
     Tree<std::pair<int,T>>* r = new Tree<std::pair<int,T>>(*p,0,0);
+
+    std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>* p2 = new std::pair(this, &r);
+//    s.push(p)
     return r;
 }
 
