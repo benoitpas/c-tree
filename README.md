@@ -44,3 +44,5 @@ So to implement the generic tree, there are 2 main options:
 I went with templates as C++ 98 standard library has a [pair](https://en.cppreference.com/w/cpp/utility/pair/pair) template.
 
 Implementing the unit tests was a great learning experience, it is actually possible with templates to have something similar to [Haskell type classes](https://book.realworldhaskell.org/read/using-typeclasses.html). Here the [trait](https://accu.org/journals/overload/9/43/frogley_442/) assertion_traits is used to implement specific comparisons used by the unit tests (c.f. https://github.com/benoitpas/c-tree/blob/7d510f662a48fc84a3400e97ab089d431a3c6668/tree98Test.cpp#L33).
+
+When using templates of templates of templates (like the stack definition), it does require a lot of attention to get them right especially as the stack contains a pair with a pointer and pointer of pointer. [Type inference](https://wiki.haskell.org/Type_inference) like in Haskell or Scala would be welcome here ;-).

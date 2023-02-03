@@ -9,6 +9,7 @@
 template <typename T> class Tree {
 private:
     T value;
+public:
     Tree<T>* left;
     Tree<T>* right;
 
@@ -33,12 +34,24 @@ template <typename T> Tree<T>::Tree(T v, Tree* l, Tree* r)
 
 template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId() const
 {
-    std::stack<std::pair<Tree<T>*,Tree<std::pair<int,T>>**>> s;
-    std::pair<int,T>* p = new std::pair<int,T>(0, value);
-    Tree<std::pair<int,T>>* r = new Tree<std::pair<int,T>>(*p,0,0);
+    Tree<std::pair<int,T>>* r;
 
-    std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>* p2 = new std::pair(this, &r);
-//    s.push(p)
+    std::stack<std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>> s;
+    s.push(*new std::pair(this, &r));
+
+    int id = 0;
+    while(!s.empty())
+    {
+        std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>& p = s.top();
+        s.pop();
+        // Create the new leaf
+        Tree<std::pair<int,T>>* l = new Tree<std::pair<int,T>>(std::pair<int,T>(id++, p.first->getValue()), 0, 0);
+        *p.second = l;
+
+        // Then add left/right nodes to be processed
+        if (p.first->getLeft() != 0) { s.push(*new std::pair(p.first->getLeft(), &l->left)); }
+        if (p.first->getRight() != 0) { s.push(*new std::pair(p.first->getRight(), &l->right)); }
+    }
     return r;
 }
 
