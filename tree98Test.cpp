@@ -84,15 +84,13 @@ protected:
   void testAddId(void) {
     Tree<std::pair<int,const char*>> *expectedTree =
     new Tree<std::pair<int,const char*>>(std::pair(0,"A"),
-        new Tree<std::pair<int,const char*>>(std::pair(4,"B"),
-            new Tree<std::pair<int,const char*>>(std::pair(3,"D"),0,0),
-            new Tree<std::pair<int,const char*>>(std::pair(2,"E"),0,0)),
+        new Tree<std::pair<int,const char*>>(std::pair(2,"B"),
+            new Tree<std::pair<int,const char*>>(std::pair(4,"D"),0,0),
+            new Tree<std::pair<int,const char*>>(std::pair(3,"E"),0,0)),
         new Tree<std::pair<int,const char*>>(std::pair(1,"C"),0,0));
-    std::cout << CppUnit::assertion_traits<Tree<std::pair<int,const char*>>>::toString(*(testa->addId())) << '\n';
 
     CPPUNIT_ASSERT_EQUAL(*expectedTree, *(testa->addId()));
   }
-
  
   void testToStringEmptyString() {
     std::string empty = "('')";

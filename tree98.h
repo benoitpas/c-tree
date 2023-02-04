@@ -37,12 +37,12 @@ template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId() const
     Tree<std::pair<int,T>>* r;
 
     std::stack<std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>> s;
-    s.push(*new std::pair(this, &r));
+    s.push(std::pair(this, &r));
 
     int id = 0;
     while(!s.empty())
     {
-        std::pair<const Tree<T>*,Tree<std::pair<int,T>>**>& p = s.top();
+        std::pair<const Tree<T>*,Tree<std::pair<int,T>>**> p = s.top();
         s.pop();
         // Create the new leaf
         Tree<std::pair<int,T>>* l = new Tree<std::pair<int,T>>(std::pair<int,T>(id++, p.first->getValue()), 0, 0);
