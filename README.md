@@ -48,3 +48,7 @@ Implementing the unit tests was a great learning experience, it is actually poss
 When using templates of templates of templates (like the stack definition), it does require a lot of attention to get them right especially as the stack contains a pair with a pointer and pointer of pointer. [Type inference](https://wiki.haskell.org/Type_inference) like in Haskell or Scala would be welcome here ;-).
 
 Also the memory management is still quite tricky, for example when 'pop' is used on the stack the pair is freed so it important to keep a copy of it.
+
+* auto C++03
+* nullptr C++03
+* https://en.cppreference.com/w/cpp/utility/variant C++17

@@ -17,8 +17,6 @@ public:
     Tree(T v, Tree<T>* l, Tree<T>* r);
 
     T getValue() const { return value; };
-    Tree<T>* getLeft() const { return left; }
-    Tree<T>* getRight() const{ return right; }
 
     Tree<std::pair<int,T>>* addId() const;
 
@@ -49,8 +47,8 @@ template <typename T> Tree<std::pair<int,T>>* Tree<T>::addId() const
         *p.second = l;
 
         // Then add left/right nodes to be processed
-        if (p.first->getLeft() != 0) { s.push(*new std::pair(p.first->getLeft(), &l->left)); }
-        if (p.first->getRight() != 0) { s.push(*new std::pair(p.first->getRight(), &l->right)); }
+        if (p.first->left != 0) { s.push(*new std::pair(p.first->left, &l->left)); }
+        if (p.first->right != 0) { s.push(*new std::pair(p.first->right, &l->right)); }
     }
     return r;
 }
@@ -67,8 +65,8 @@ template <typename T> std::string Tree<T>::toString() const
 template <typename T> bool operator==(const Tree<T>& lhs, const Tree<T>& rhs)
 {
     return (lhs.getValue() == rhs.getValue()
-        && (lhs.getLeft() == rhs.getLeft() || (lhs.getLeft() != 0 && *lhs.getLeft() == *rhs.getLeft()))
-        && (lhs.getRight() == rhs.getRight() || (lhs.getRight() != 0 && *lhs.getRight() == *rhs.getRight())));
+        && (lhs.left == rhs.left || (lhs.left != 0 && *lhs.left == *rhs.left))
+        && (lhs.right == rhs.right || (lhs.right != 0 && *lhs.right == *rhs.right)));
 }
 
 #endif // TREE98_H

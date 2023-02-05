@@ -34,14 +34,9 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
 {
     static bool equal( const Tree<T>& x, const Tree<T>& y )
     {
-      Tree<T>* xLeft = x.getLeft();
-      Tree<T>* xRight = x.getRight();
-      Tree<T>* yLeft = y.getLeft();
-      Tree<T>* yRight = y.getRight();
-
       return x.getValue() == y.getValue()
-      && ((xLeft == 0 && yLeft == 0) || (xLeft != 0 && yLeft != 0 && *xLeft == *yLeft))
-      && ((xRight == 0 && yRight == 0) || (xRight != 0 && yRight != 0 && *xRight == *yRight));
+      && ((x.left == 0 && y.left == 0) || (x.left != 0 && y.left != 0 && *x.left == *y.left))
+      && ((x.right == 0 && y.right == 0) || (x.right != 0 && y.right != 0 && *x.right == *y.right));
     }
 
     static std::string toString( const Tree<T>& x )
@@ -82,6 +77,7 @@ protected:
   }
 
   void testAddId(void) {
+
     Tree<std::pair<int,const char*>> *expectedTree =
     new Tree<std::pair<int,const char*>>(std::pair(0,"A"),
         new Tree<std::pair<int,const char*>>(std::pair(2,"B"),
