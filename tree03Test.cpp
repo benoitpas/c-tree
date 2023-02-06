@@ -13,7 +13,7 @@ static std::string valueToString(const std::pair<int, const char*>& pair);
 
 static std::string valueToString(const char* s);
 
-#include "tree98.h"
+#include "tree03.h"
 
 static std::string valueToString(const std::pair<int, const char*>& pair)
 {
@@ -48,9 +48,9 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
     }
  };
 
-class Test98 : public CPPUNIT_NS::TestCase
+class Test03 : public CPPUNIT_NS::TestCase
 {
-  CPPUNIT_TEST_SUITE(Test98);
+  CPPUNIT_TEST_SUITE(Test03);
   CPPUNIT_TEST(testAddIdEmptyTree);
   CPPUNIT_TEST(testAddId);
   CPPUNIT_TEST(testToStringEmptyString);
@@ -101,7 +101,7 @@ protected:
 };
 
 
-CPPUNIT_TEST_SUITE_REGISTRATION(Test98);
+CPPUNIT_TEST_SUITE_REGISTRATION(Test03);
 
 int main()
 

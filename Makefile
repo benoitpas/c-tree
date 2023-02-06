@@ -28,3 +28,4 @@ allTests: stackTest treeTest tree98Test tree03Test
 	./stackTest
 	./treeTest
 	./tree98Test
+	./tree03Test
