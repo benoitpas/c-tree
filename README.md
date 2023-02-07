@@ -49,6 +49,11 @@ When using templates of templates of templates (like the stack definition), it d
 
 Also the memory management is still quite tricky, for example when 'pop' is used on the stack the pair is freed so it important to keep a copy of it.
 
-* auto C++03
-* nullptr C++03
-* https://en.cppreference.com/w/cpp/utility/variant C++17
+# C++ 03
+
+[C++ 03](https://en.wikipedia.org/wiki/C%2B%2B03) is defined as a bug fix release but it still brings (among others) two improvements that help readability:
+* auto for type inference
+* nullptr instead of 0 (or NULL) for null pointers
+
+# C++17
+* https://en.cppreference.com/w/cpp/utility/variant
