@@ -100,11 +100,9 @@ protected:
 
 };
 
-
 CPPUNIT_TEST_SUITE_REGISTRATION(Test98);
 
 int main()
-
 {
   CPPUNIT_NS::TestResult controller;
 
