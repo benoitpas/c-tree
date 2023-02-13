@@ -1,5 +1,12 @@
 CFLAGS = -g
 
+allTests: stackTest treeTest tree98Test tree03Test tree11Test
+	./stackTest
+	./treeTest
+	./tree98Test
+	./tree03Test
+	./tree11Test
+
 clean:
 	rm -f *.o
 	rm -f treeMain treeTest
@@ -21,8 +28,5 @@ tree98Test: tree98Test.o tree98.h
 tree03Test: tree03Test.o tree03.h
 	g++ $(CFLAGS) -std=c++03 tree03Test.o -lcppunit -o tree03Test
 
-allTests: stackTest treeTest tree98Test tree03Test
-	./stackTest
-	./treeTest
-	./tree98Test
-	./tree03Test
+tree11Test: tree11Test.o tree11.h
+	g++ $(CFLAGS) -std=c++11 tree11Test.o -lcppunit -o tree11Test
