@@ -56,4 +56,5 @@ Also the memory management is still quite tricky, for example when 'pop' is used
 * nullptr instead of 0 (or NULL) for null pointers
 
 # C++17
-* https://en.cppreference.com/w/cpp/utility/variant
+There is an interesting feature in C++17 that I thought I could use to define the tree:
+ https://en.cppreference.com/w/cpp/utility/variant and https://www.modernescpp.com/index.php/visiting-a-std-variant-with-the-overload-pattern . The syntax is still quite heavy. Actually, it is very similar to using an [optional](https://en.cppreference.com/w/cpp/utility/optional) which make the implementation clearer in my opinion.

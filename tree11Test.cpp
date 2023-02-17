@@ -7,7 +7,35 @@
 
 #include <cppunit/TestAssert.h>
 
+static std::string valueToString(const char* s);
+
 #include "tree11.h"
+
+static std::string valueToString(const char* s)
+{
+    std::ostringstream ost;
+    ost << "'" << s << "'";
+    return ost.str();
+}
+
+template <typename T>
+struct CPPUNIT_NS::assertion_traits<Tree<T>>
+{
+    static bool equal( const Tree<T>& x, const Tree<T>& y )
+    {
+      return x.value == y.value
+      && ((x.left == nullptr && y.left == nullptr) || (x.left != nullptr && y.left != nullptr && *x.left == *y.left))
+      && ((x.right == nullptr && y.right == nullptr) || (x.right != nullptr && y.right != nullptr && *x.right == *y.right));
+    }
+
+    static std::string toString( const Tree<T>& x )
+    {
+      std::string text = x.toString();
+      std::ostringstream ost;
+      ost << text;
+      return ost.str();
+    }
+ };
 
 class Test11 : public CPPUNIT_NS::TestCase
 {
@@ -15,12 +43,13 @@ class Test11 : public CPPUNIT_NS::TestCase
   CPPUNIT_TEST(dummyTest);
   CPPUNIT_TEST_SUITE_END();
 
-  std::shared_ptr<std::variant<Nil, Tree<int>>> nil = std::make_shared<std::variant<Nil, Tree<int>>>(Nil());
-  Tree<int>* emptyTree = new Tree<int>(0, nil, nil);
+  std::optional<Ptr<Tree<const char*>>> nil = std::nullopt;
+  Tree<const char*>* emptyTree = new Tree<const char*>("a", nil, nil);
 
   protected:
      void dummyTest(void) {
-        CPPUNIT_ASSERT_EQUAL(0, 0);
+        Tree<const char*>* anotherEmptyTree = new Tree<const char*>("a", nil, nil);
+        CPPUNIT_ASSERT_EQUAL(*anotherEmptyTree, *emptyTree);
   }
 };
 
