@@ -40,19 +40,25 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
 class Test11 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test11);
-  CPPUNIT_TEST(dummyTest);
+  CPPUNIT_TEST(emptyTreeEqualityTest);
+  CPPUNIT_TEST(toStringEmptyTree);
   CPPUNIT_TEST_SUITE_END();
 
   std::optional<Ptr<Tree<const char*>>> nil = std::nullopt;
   Tree<const char*>* emptyTree = new Tree<const char*>("a", nil, nil);
 
   protected:
-     void dummyTest(void) {
+    void emptyTreeEqualityTest(void)
+    {
         Tree<const char*>* anotherEmptyTree = new Tree<const char*>("a", nil, nil);
         CPPUNIT_ASSERT_EQUAL(*anotherEmptyTree, *emptyTree);
-  }
-};
+    }
 
+    void toStringEmptyTree(void)
+    {
+      CPPUNIT_ASSERT_EQUAL(std::string("('a')"), emptyTree->toString());
+    }
+};
 
 CPPUNIT_TEST_SUITE_REGISTRATION(Test11);
 
