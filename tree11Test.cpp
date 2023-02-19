@@ -41,11 +41,19 @@ class Test11 : public CPPUNIT_NS::TestCase
 {
   CPPUNIT_TEST_SUITE(Test11);
   CPPUNIT_TEST(emptyTreeEqualityTest);
-  CPPUNIT_TEST(toStringEmptyTree);
+  CPPUNIT_TEST(toStringEmptyTreeTest);
+  CPPUNIT_TEST(toStringTest);
   CPPUNIT_TEST_SUITE_END();
 
   std::optional<Ptr<Tree<const char*>>> nil = std::nullopt;
+
   Tree<const char*>* emptyTree = new Tree<const char*>("a", nil, nil);
+
+  Tree<const char*> *teste = new Tree<const char*> ("E", nil, nil);
+  Tree<const char*> *testd = new Tree<const char*> ("D", nil, nil);
+  Tree<const char*> *testc = new Tree<const char*> ("C", nil, nil);
+  Tree<const char*> *testb = new Tree<const char*> ("B", testd,teste);
+  Tree<const char*> *testa = new Tree<const char*> ("A", testb,testc);
 
   protected:
     void emptyTreeEqualityTest(void)
@@ -54,10 +62,17 @@ class Test11 : public CPPUNIT_NS::TestCase
         CPPUNIT_ASSERT_EQUAL(*anotherEmptyTree, *emptyTree);
     }
 
-    void toStringEmptyTree(void)
+    void toStringEmptyTreeTest(void)
     {
       CPPUNIT_ASSERT_EQUAL(std::string("('a')"), emptyTree->toString());
     }
+
+    void toStringTest(void)
+    {
+      std::string e = "('A',('B',('D'),('E')),('C'))";
+      CPPUNIT_ASSERT_EQUAL(e, testa->toString());
+    }
+
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION(Test11);

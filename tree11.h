@@ -19,6 +19,13 @@ struct Tree {
         right = r;
     }
 
+    Tree(T v, Tree<T>* l, Tree<T>* r)
+    : value(v)
+    {
+        left = std::optional<Ptr<Tree<const char*>>>(l);
+        right = std::optional<Ptr<Tree<const char*>>>(r);
+    }
+
     static std::string toString(std::optional<Ptr<Tree<T>>> v)
     {
         std::ostringstream ost;
