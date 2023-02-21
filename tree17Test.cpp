@@ -37,9 +37,9 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
     }
  };
 
-class Test11 : public CPPUNIT_NS::TestCase
+class Test17 : public CPPUNIT_NS::TestCase
 {
-  CPPUNIT_TEST_SUITE(Test11);
+  CPPUNIT_TEST_SUITE(Test17);
   CPPUNIT_TEST(emptyTreeEqualityTest);
   CPPUNIT_TEST(toStringEmptyTreeTest);
   CPPUNIT_TEST(toStringTest);
@@ -75,7 +75,7 @@ class Test11 : public CPPUNIT_NS::TestCase
 
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION(Test11);
+CPPUNIT_TEST_SUITE_REGISTRATION(Test17);
 
 int main()
 {
