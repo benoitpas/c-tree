@@ -21,7 +21,7 @@ static std::string valueToString(const char* s)
     return ost.str();
 }
 
-static std::string valueToString(const std::pair<int, const char*>& pair)
+static std::string valueToString(const Pair<int, const char*>& pair)
 {
     std::ostringstream ost;
     ost << "(" << pair.first << "," << "'" << pair.second << "')";
@@ -40,10 +40,7 @@ struct CPPUNIT_NS::assertion_traits<Tree<T>>
 
     static std::string toString( const Tree<T>& x )
     {
-      std::string text = x.toString();
-      std::ostringstream ost;
-      ost << text;
-      return ost.str();
+      return x.toString();
     }
  };
 
@@ -57,8 +54,8 @@ class Test17 : public CPPUNIT_NS::TestCase
   CPPUNIT_TEST(addIdTest);
   CPPUNIT_TEST_SUITE_END();
 
-  std::optional<Ptr<Tree<const char*>>> nil = std::nullopt;
-  std::optional<Ptr<Tree<std::pair<int,const char*>>>> nilId = std::nullopt;
+  Opt<Ptr<Tree<const char*>>> nil = std::nullopt;
+  Opt<Ptr<Tree<Pair<int,const char*>>>> nilId = std::nullopt;
 
   Tree<const char*>* emptyTree = new Tree<const char*>("a", nil, nil);
 
@@ -71,7 +68,7 @@ class Test17 : public CPPUNIT_NS::TestCase
   protected:
     void emptyTreeEqualityTest(void)
     {
-        Tree<const char*>* anotherEmptyTree = new Tree<const char*>("a", nil, nil);
+        auto anotherEmptyTree = new Tree<const char*>("a", nil, nil);
         CPPUNIT_ASSERT_EQUAL(*anotherEmptyTree, *emptyTree);
     }
 
@@ -88,7 +85,7 @@ class Test17 : public CPPUNIT_NS::TestCase
 
     void addIdEmptyTreeTest(void)
     {
-      auto emptyTreeWithId = new Tree<std::pair<int,const char*>>(std::pair<int,const char*>(0,"a"), nilId, nilId);
+      auto emptyTreeWithId = new Tree<Pair<int,const char*>>(Pair<int,const char*>(0,"a"), nilId, nilId);
       CPPUNIT_ASSERT_EQUAL(*emptyTreeWithId, *emptyTree->addId(0));
     }
 
@@ -99,7 +96,7 @@ class Test17 : public CPPUNIT_NS::TestCase
                 new Tree<Pair<int,const char*>>(Pair<int,const char*>(0,"D"), nilId, nilId),
                 new Tree<Pair<int,const char*>>(Pair<int,const char*>(1,"E"), nilId, nilId)),
         new Tree<Pair<int,const char*>>(Pair<int,const char*>(3,"C"), nilId, nilId));
-      // ((4,'A'),((2,'B'),((0,'D')),((1,'E'))),((3,'C')))"
+
       auto s = (*testa->addId(0)).toString();
       auto es = e->toString();
       CPPUNIT_ASSERT_EQUAL(es, s);
